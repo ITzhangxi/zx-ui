@@ -1,0 +1,76 @@
+.loop(@num) when (@num < 24) {
+  &.zx-col-span-@{num} {
+    width: @num/24*100%;
+  }
+  &.zx-col-offset-@{num} {
+    margin-left: @num/24*100%;
+  }
+  &.zx-col-push-@{num} {
+    position: relative;
+    left: @num/24*100%;
+  }
+  &.zx-col-pull-@{num} {
+    position: relative;
+    right: @num/24*100%;
+  }
+  .loop((@num+1));
+}
+
+.loop-size(@num,@size) when (@num < 24) {
+  &.zx-col-@{size}-@{num} {
+    width: @num/24*100%;
+  }
+
+  &.zx-col-@{size}-offset-@{num} {
+    margin-left: @num/24*100%;
+  }
+  &.zx-col-@{size}-push-@{num} {
+    position: relative;
+    left: @num/24*100%;
+  }
+  &.zx-col-@{size}-pull-@{num} {
+    position: relative;
+    right: @num/24*100%;
+  }
+  .loop-size((@num+1), @size);
+}
+
+.zx-col {
+  float: left;
+  box-sizing: border-box;
+  .loop(1);
+}
+
+@media only screen and (max-width: 768px) {
+  .zx-col {
+    .loop-size(1, xs)
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .zx-col {
+    .loop-size(1, sm)
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .zx-col {
+    .loop-size(1, md)
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .zx-col {
+    .loop-size(1, lg)
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .zx-col {
+    .loop-size(1, xl)
+  }
+}
+
+
+
+
